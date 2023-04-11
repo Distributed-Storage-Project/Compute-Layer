@@ -6,6 +6,15 @@ namespace ComputeLayer.Controllers
     [Route("/query")]
     public class HomeController : Controller
     {
+
+        //querycontroller -> homecontroller (dependency injection) 
+        private readonly QueryController _queryController;
+
+        public HomeController(QueryController queryController)
+        {
+            _queryController = queryController;
+        }
+
         [HttpPost]
         /* Query for task:
          * {
