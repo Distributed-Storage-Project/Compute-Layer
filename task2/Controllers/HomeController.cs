@@ -1,5 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ComputeLayer.Models;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+
 namespace ComputeLayer.Controllers
 {
     [ApiController]
@@ -16,6 +21,23 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> AddJSON([FromBody] Query query, [FromServices] QueryController queryController)
+        {
+            try
+            {
+                // Step 1: Request data from storage layer
+                var data = await _queryController.GetQueryResult(query);
+
+                // Step 2: Return data to user
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
         /* Query for task:
          * {
          *  "query": "Logs | where Timestamp >= datetime(2016-10-22 05:00) | where Level == \"e\" | limit 19"
@@ -33,10 +55,6 @@ namespace ComputeLayer.Controllers
          * Rewrite query as "Logs| where Timestamp >= datetime(2015-08-22 05:00) and Timestamp < datetime(2015-08-22 06:00)| where Level == \"e\" and Service == \"Inferences.UnusualEvents_Main\"| project Level, Timestamp, Message| limit 10"
          * Then it sends a 200 response
          */
-        public IActionResult addJSON([FromBody] Query query, [FromServices] QueryController queryController)
-        {
-
-            return Ok();
-        }
     }
 }
+

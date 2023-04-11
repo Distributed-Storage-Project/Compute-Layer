@@ -64,3 +64,13 @@ C:\Users\celes\Documents\GitHub\Compute-Layer\task2\obj\Debug\net7.0\refint\Comp
 C:\Users\celes\Documents\GitHub\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.pdb
 C:\Users\celes\Documents\GitHub\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.genruntimeconfig.cache
 C:\Users\celes\Documents\GitHub\Compute-Layer\task2\obj\Debug\net7.0\ref\ComputeLayer.dll
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.AssemblyInfo.cs
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.dll
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\refint\ComputeLayer.dll
+C:\Users\LENOVO\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.pdb
