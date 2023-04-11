@@ -27,11 +27,7 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {
-              "C:\\Users\\LENOVO\\source\\repos\\Distributed-Storage-Project": {
-                "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Distributed-Storage-Project"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

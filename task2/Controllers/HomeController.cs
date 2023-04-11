@@ -12,7 +12,6 @@ namespace ComputeLayer.Controllers
     public class HomeController : Controller
     {
 
-        //querycontroller -> homecontroller (dependency injection) 
         private readonly QueryController _queryController;
 
         public HomeController(QueryController queryController)
@@ -25,15 +24,13 @@ namespace ComputeLayer.Controllers
         {
             try
             {
-                // Step 1: Request data from storage layer
                 var data = await _queryController.GetQueryResult(query);
 
-                // Step 2: Return data to user
                 return Ok(data);
             }
             catch (Exception ex)
             {
-                // Handle errors
+
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }

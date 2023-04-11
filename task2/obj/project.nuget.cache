@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "rh4HR+hz2gIm5cyoQIlO3h5XuK3Q0a2v7Lf3f7rFpgmpxdRp38BwCvF7La0SXsb5FFBUZLbHbQDEmEumqwPUTg==",
-  "success": false,
+  "dgSpecHash": "j+ibsEPrquL3nTf4NQd/b+bnOTfQi0uVBGyLqR/285L9UobDCfTVzbIt5Z5klacyV5kyCOMs4/6vBLaFUulfLQ==",
+  "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\ComputeLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.4\\microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
@@ -13,15 +13,5 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\LENOVO\\source\\repos\\Distributed-Storage-Project'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\LENOVO\\source\\repos\\Distributed-Storage-Project",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
