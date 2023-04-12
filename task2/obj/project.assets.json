@@ -504,19 +504,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {}
+    "C:\\Users\\hanna\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\ComputeLayer.csproj",
+      "projectUniqueName": "C:\\Users\\hanna\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\ComputeLayer.csproj",
       "projectName": "ComputeLayer",
-      "projectPath": "C:\\Users\\LENOVO\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\ComputeLayer.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\obj\\",
+      "projectPath": "C:\\Users\\hanna\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\ComputeLayer.csproj",
+      "packagesPath": "C:\\Users\\hanna\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hanna\\Source\\Repos\\Distributed-Storage-Project\\Compute-Layer\\task2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hanna\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
