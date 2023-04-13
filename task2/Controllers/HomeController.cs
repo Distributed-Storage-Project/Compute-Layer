@@ -61,7 +61,7 @@ namespace ComputeLayer.Controllers
             }
         }
 
-        //i changed output to query here as requested. 
+        //i changed output to query here as requested. -Jiayue
         private Query ConvertToSql(Query query)
         {
 
