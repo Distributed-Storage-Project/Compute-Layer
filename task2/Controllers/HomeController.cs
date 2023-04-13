@@ -66,7 +66,11 @@ namespace ComputeLayer.Controllers
         {
             //Query sql = KustoToSqlConverter.Convert(query);
             //return sql;
-            
+
+            //string sql = KustoToSqlConverter.Convert(query);
+            //Console.WriteLine($"Converted KQL query to SQL: {sql}");
+            //return sql;
+
             return KustoToSqlConverter.Convert(query);
 
         }

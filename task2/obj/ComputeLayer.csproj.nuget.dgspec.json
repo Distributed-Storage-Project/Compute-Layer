@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "Microsoft.Azure.Kusto.Data": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "Microsoft.Azure.Kusto.Language": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
