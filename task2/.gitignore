@@ -1,9 +1,0 @@
-.vs
-bin
-obj
-Properties
-appsettings.Development.json
-appsettings.json
-ComputeLayer.csproj
-ComputeLayer.csproj.user
-ComputeLayer.sln
