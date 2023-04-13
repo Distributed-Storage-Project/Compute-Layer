@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Kusto.Data.Linq;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Http;
 
@@ -19,17 +19,20 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> QueryAsync([FromBody] String query)
+        public async Task<IActionResult> AddJSON([FromBody] Query query)
         {
             try
             {
                 // Convert Kusto query to SQL
-                string sql = KustoToSqlConverter.Convert(query);
+                query = KustoToSqlConverter.Convert(query);
 
-                // Create HttpContent with the SQL query as plain text
-                HttpContent content = new StringContent(sql, System.Text.Encoding.UTF8, "text/plain");
+                // Serialize the Query object to JSON
+                string json = JsonConvert.SerializeObject(query);
 
-                // Send SQL query to Storage layer
+                // Create HttpContent with the JSON representation of the Query object
+                HttpContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                // Send Query object to Storage layer
                 var response = await _storageClient.PostAsync("/api/query", content);
 
                 // Check response status code and return result or error message
@@ -49,6 +52,5 @@ namespace ComputeLayer.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-
     }
 }

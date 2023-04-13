@@ -11,22 +11,26 @@ using static Kusto.Data.Security.WellKnownAadResourceIds;
 
 public static class KustoToSqlConverter
 {
-    public static String Convert(String query)
+    public static Query Convert(Query query)
     {    //a method to decided calling logs table parser or request table parser, or none of them
          // Extract the table name
-        var table = query.Substring(0, query.IndexOf("|")).Trim();
+        string s = query.queryString;
+        var table = s.Substring(0, s.IndexOf("|")).Trim();
 
         if (table == "Logs")
         {
-            return logsToSql(query);
+            query.queryString = logsToSql(s);
+            return query;
         }
         else if (table == "Requests")
         {
-            return reqToSql(query);
+            query.queryString = reqToSql(s);
+            return query;
         }
         else
         {
-            return errToSql(table);
+            query.queryString = errToSql(table);
+            return query;
         }
     }
 
