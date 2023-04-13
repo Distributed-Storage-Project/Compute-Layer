@@ -64,9 +64,10 @@ namespace ComputeLayer.Controllers
         //i changed output to query here as requested. -Jiayue
         private Query ConvertToSql(Query query)
         {
-
-
-            return return KustoToSqlConverter.Convert(query);;
+            //Query sql = KustoToSqlConverter.Convert(query);
+            //return sql;
+            
+            return KustoToSqlConverter.Convert(query);
 
         }
 
