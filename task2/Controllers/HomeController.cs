@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ComputeLayer.Models;
-using System.Net.Http.Headers;
-using System.Net.Http;
-using System.Net.Http.Headers;
+﻿using ComputeLayer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -30,16 +27,29 @@ namespace ComputeLayer.Controllers
                     {
                         string responseData = await response.Content.ReadAsStringAsync();
 
-                        // Convert JSON response to list of rows
-                        //test the data 
-                        //get the data and convert it into a list 
-                        List<List<string>> rows = JsonConvert.DeserializeObject<List<List<string>>>(responseData);
+                        var responseDto = JsonConvert.DeserializeObject<QueryResponseDto>(responseData);
 
-                        // Return data to user
-                        return Ok(rows);
+                        if (responseDto.IsSuccess)
+                        {
+                            // Build response to return to user
+                            var data = responseDto.Data;
+                            responseDto = new QueryResponseDto
+                            {
+                                IsSuccess = true,
+                                Data = data
+                            };
+                            Console.WriteLine("Response was successful.");
+                            return Ok(responseDto);
+                        }
+                        else
+                        {
+                            // Handle query error
+                            return StatusCode(StatusCodes.Status500InternalServerError, responseDto.Message);
+                        }
                     }
                     else
                     {
+                        // Handle HTTP error
                         return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
                     }
                 }
@@ -51,12 +61,14 @@ namespace ComputeLayer.Controllers
             }
         }
 
+
         private string ConvertToSql(Query query)
         {
-            // TODO: Implement Kusto to SQL query conversion logic
-            return "SELECT * FROM <table-name>";
-        }
 
+
+            return $"SELECT * FROM Logs;";
+
+        }
 
     }
 }
