@@ -29,13 +29,13 @@ namespace ComputeLayer.Controllers
 
                         var responseDto = JsonConvert.DeserializeObject<QueryResponseDto>(responseData);
 
-                        if (responseDto.isSucess)
+                        if (responseDto.IsSuccess)
                         {
                             // Build response to return to user
                             var data = responseDto.Data;
                             responseDto = new QueryResponseDto
                             {
-                                isSucess = true,
+                                IsSuccess = true,
                                 Data = data
                             };
                             Console.WriteLine("Response was successful.");

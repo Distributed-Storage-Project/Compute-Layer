@@ -108,3 +108,37 @@ C:\Users\hanna\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\
 C:\Users\hanna\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.CopyComplete
 C:\Users\hanna\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.genruntimeconfig.cache
 C:\Users\hanna\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ref\ComputeLayer.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\appsettings.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\ComputeLayer.exe
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\ComputeLayer.deps.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\ComputeLayer.runtimeconfig.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\ComputeLayer.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\ComputeLayer.pdb
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.AssemblyReference.cache
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.AssemblyInfoInputs.cache
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.AssemblyInfo.cs
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.CoreCompileInputs.cache
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets\msbuild.ComputeLayer.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets\msbuild.build.ComputeLayer.props
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ComputeLayer.props
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ComputeLayer.props
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\scopedcss\bundle\ComputeLayer.styles.css
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.csproj.CopyComplete
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\refint\ComputeLayer.dll
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.pdb
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ComputeLayer.genruntimeconfig.cache
+C:\Users\Peach Bubbles\Source\Repos\Distributed-Storage-Project\Compute-Layer\task2\obj\Debug\net7.0\ref\ComputeLayer.dll
