@@ -61,12 +61,12 @@ namespace ComputeLayer.Controllers
             }
         }
 
-
-        private string ConvertToSql(Query query)
+        //i changed output to query here as requested. 
+        private Query ConvertToSql(Query query)
         {
 
 
-            return $"SELECT * FROM Logs;";
+            return return KustoToSqlConverter.Convert(query);;
 
         }
 
