@@ -8,29 +8,27 @@ using Kusto.Data.Net.Client;
 using Kusto.Language;
 using Kusto.Language.Syntax;
 using static Kusto.Data.Security.WellKnownAadResourceIds;
+using ComputeLayer.Models;
 
 public static class KustoToSqlConverter
 {
-    public static Query Convert(Query query)
+    public static string Convert(Query query)
     {    //a method to decided calling logs table parser or request table parser, or none of them
          // Extract the table name
-        string s = query.queryString;
+        string s = query.query;
         var table = s.Substring(0, s.IndexOf("|")).Trim();
 
         if (table == "Logs")
         {
-            query.queryString = logsToSql(s);
-            return query;
+            return logsToSql(s);
         }
         else if (table == "Requests")
         {
-            query.queryString = reqToSql(s);
-            return query;
+            return reqToSql(s);
         }
         else
         {
-            query.queryString = errToSql(table);
-            return query;
+            return errToSql(table);
         }
     }
 

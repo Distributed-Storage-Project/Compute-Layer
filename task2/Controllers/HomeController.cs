@@ -15,7 +15,7 @@ namespace ComputeLayer.Controllers
         {
             try
             {
-                // From Task 1 : Convert Kusto query to SQL query
+                // From Task 1 : Convert Kusto query to SQL query 
                 string sqlQuery = ConvertToSql(query);
 
                 // Make HTTP request to Storage Layer
@@ -29,13 +29,13 @@ namespace ComputeLayer.Controllers
 
                         var responseDto = JsonConvert.DeserializeObject<QueryResponseDto>(responseData);
 
-                        if (responseDto.IsSuccess)
+                        if (responseDto.isSucess)
                         {
                             // Build response to return to user
                             var data = responseDto.Data;
                             responseDto = new QueryResponseDto
                             {
-                                IsSuccess = true,
+                                isSucess = true,
                                 Data = data
                             };
                             Console.WriteLine("Response was successful.");
@@ -62,7 +62,7 @@ namespace ComputeLayer.Controllers
         }
 
         //i changed output to query here as requested. -Jiayue
-        private Query ConvertToSql(Query query)
+        private string ConvertToSql(Query query)
         {
             //Query sql = KustoToSqlConverter.Convert(query);
             //return sql;
