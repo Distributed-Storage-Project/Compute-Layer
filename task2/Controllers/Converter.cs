@@ -8,7 +8,6 @@ using Kusto.Data.Net.Client;
 using Kusto.Language;
 using Kusto.Language.Syntax;
 using static Kusto.Data.Security.WellKnownAadResourceIds;
-using ComputeLayer.Models;
 
 public static class KustoToSqlConverter
 {
@@ -59,13 +58,6 @@ public static class KustoToSqlConverter
 
         string sql = $"SELECT * FROM Requests WHERE ";
         // Construct the SQL query using the extracted components
-        if (limit != null)
-        {
-            /*Old Line which parsed kusto limit to sql:
-            sql = $"SELECT TOP {limit} * FROM Requests WHERE ";*/
-            //Ryan's fix (TOP doesn't seem to be supported by SQLite)
-            sqlQuery = $"LIMIT {limit.Value}";
-        }
         foreach (var descendant in FilterOperators)
         {
             sql += descendant.ToString().Substring(1).Replace("where", "").Substring(1) + " AND ";
@@ -74,6 +66,12 @@ public static class KustoToSqlConverter
         {
             sql = sql.Substring(0, sql.Length - 5);
         }
+
+        if (limit != null)
+        {
+            sql += $" LIMIT {limit}";
+        }
+
         return sql;
     }
 
@@ -167,10 +165,6 @@ public static class KustoToSqlConverter
 
         string sqlQuery = $"SELECT * FROM Logs WHERE ";
         // Construct the SQL query using the extracted components
-        if (limit != null)
-        {
-            sqlQuery = $"SELECT TOP {limit} * FROM Logs WHERE ";
-        }
 
 
         if (timestamp != null)
@@ -192,9 +186,13 @@ public static class KustoToSqlConverter
         {
             sqlQuery = sqlQuery.Substring(0, sqlQuery.Length - 5);
         }
+
+        if (limit != null)
+        {
+            sqlQuery += $" LIMIT {limit}";
+        }
         return sqlQuery;
     }
 }
-
 
 
