@@ -61,7 +61,10 @@ public static class KustoToSqlConverter
         // Construct the SQL query using the extracted components
         if (limit != null)
         {
-            sql = $"SELECT TOP {limit} * FROM Requests WHERE ";
+            /*Old Line which parsed kusto limit to sql:
+            sql = $"SELECT TOP {limit} * FROM Requests WHERE ";*/
+            //Ryan's fix (TOP doesn't seem to be supported by SQLite)
+            sqlQuery = $"LIMIT {limit.Value}";
         }
         foreach (var descendant in FilterOperators)
         {
