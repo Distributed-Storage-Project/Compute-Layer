@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj": {}
+  },
+  "projects": {
+    "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj",
+        "projectName": "Compute",
+        "projectPath": "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj",
+        "packagesPath": "/Users/jiayuechi/.nuget/packages/",
+        "outputPath": "/Users/jiayuechi/Projects/Compute/Compute/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/jiayuechi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Http.Extensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Azure.Kusto.Data": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "Microsoft.Azure.Kusto.Language": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "Microsoft.Azure.Kusto.Tools": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
