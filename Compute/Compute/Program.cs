@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("StorageAPI", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:19722/query"); //storage api address
+    client.BaseAddress = new Uri("http://localhost:19722/api/query"); //storage api address
 });
 
 var app = builder.Build();

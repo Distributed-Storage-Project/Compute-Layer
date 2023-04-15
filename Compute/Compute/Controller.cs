@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Http;
+using System.Net.Http;
+using System.Text;
 
 namespace ComputeLayer.Controllers
 {
     [ApiController]
-    [Route("/query")]
+    [Route("api/query")]
     public class HomeController : ControllerBase
     {
-        private readonly HttpClient _storageClient;
+        private readonly string _queryControllerUrl = "https://localhost:7076/api/query"; // Update with your QueryController endpoint URL
+        private readonly HttpClient _httpClient;
 
-        public HomeController(IHttpClientFactory httpClientFactory)
+        public HomeController()
         {
-            _storageClient = httpClientFactory.CreateClient("StorageAPI");
+            _httpClient = new HttpClient();
         }
 
         [HttpPost]
@@ -24,28 +25,18 @@ namespace ComputeLayer.Controllers
             try
             {
                 // Convert Kusto query to SQL
-                query = KustoToSqlConverter.Convert(query);
+                string sqlQuery = KustoToSqlConverter.Convert(query);
 
-                // Serialize the Query object to JSON
-                string json = JsonConvert.SerializeObject(query);
+                // Create a JSON payload with the parsed query
+                var requestBody = JsonConvert.SerializeObject(new { query = sqlQuery });
+                var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
-                // Create HttpContent with the JSON representation of the Query object
-                HttpContent content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+                // Call the QueryController endpoint and get the response
+                var response = await _httpClient.PostAsync(_queryControllerUrl, content);
+                var responseContent = await response.Content.ReadAsStringAsync();
 
-                // Send Query object to Storage layer
-                var response = await _storageClient.PostAsync("/api/query", content);
-
-                // Check response status code and return result or error message
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsStringAsync();
-                    return Ok(result);
-                }
-                else
-                {
-                    var error = await response.Content.ReadAsStringAsync();
-                    return StatusCode((int)response.StatusCode, error);
-                }
+                // Return the response content directly as an IActionResult
+                return Content(responseContent, "application/json");
             }
             catch (Exception e)
             {

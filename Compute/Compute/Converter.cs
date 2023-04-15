@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using Kusto.Data;
 using Kusto.Data.Common;
 using Kusto.Data.Linq;
@@ -11,38 +12,36 @@ using static Kusto.Data.Security.WellKnownAadResourceIds;
 
 public static class KustoToSqlConverter
 {
-    public static Query Convert(Query query)
+    public static string Convert(Query query)
     {    //a method to decided calling logs table parser or request table parser, or none of them
          // Extract the table name
-        string s = query.queryString;
-        var table = s.Substring(0, s.IndexOf("|")).Trim();
+        string s = query.query;
+        string table = s.Substring(0, s.IndexOf("|")).Trim();
 
-        if (table == "Logs")
+        if (table != null)
         {
-            query.queryString = logsToSql(s);
-            return query;
-        }
-        else if (table == "Requests")
-        {
-            query.queryString = reqToSql(s);
-            return query;
+            return toSql(s, table);
         }
         else
         {
-            query.queryString = errToSql(table);
-            return query;
+            return errToSql(table);
         }
     }
 
-    static string reqToSql(string kustoQuery)
+    static string toSql(string kustoQuery, string table)
     {
         int? limit = null;
-        Dictionary<string, List<string>> filterMap = new Dictionary<string, List<string>>();
+        DateTime? timestamp = null;
+
+        string sql = $"SELECT * FROM {table} WHERE ";
+        // Construct the SQL query using the extracted components
 
         var code = KustoCode.Parse(kustoQuery);
-        // Get descendants of the root node that are of type ProjectOperator
+        Dictionary<string, List<string>> filterMap = new Dictionary<string, List<string>>();
+
         var FilterOperators = code.Syntax.GetDescendants<FilterOperator>();
         var TakeOperators = code.Syntax.GetDescendants<TakeOperator>();
+
         foreach (var TakeOperator in TakeOperators)
         {
             var parsed = KustoCode.Parse(TakeOperator.ToString());
@@ -58,41 +57,6 @@ public static class KustoToSqlConverter
         {
             limit = int.Parse(filterMap["limit"][0]);
         }
-
-        string sql = $"SELECT * FROM Requests WHERE ";
-        // Construct the SQL query using the extracted components
-        if (limit != null)
-        {
-            sql = $"SELECT TOP {limit} * FROM Requests WHERE ";
-        }
-        foreach (var descendant in FilterOperators)
-        {
-            sql += descendant.ToString().Substring(1).Replace("where", "").Substring(1) + " AND ";
-        }
-        if (sql.EndsWith(" AND "))
-        {
-            sql = sql.Substring(0, sql.Length - 5);
-        }
-        return sql;
-    }
-
-    static String errToSql(String table)
-    {
-        String s = "Table: \"" + table + "\" not accessable or table doesn't exist.";
-        return s;
-    }
-
-    static string logsToSql(string kustoQuery)
-    {
-        Dictionary<string, List<string>> filterMap = new Dictionary<string, List<string>>();
-        DateTime? timestamp = null;
-        string level = null, service = null;
-        int? limit = null;
-
-        var code = KustoCode.Parse(kustoQuery);
-
-        var FilterOperators = code.Syntax.GetDescendants<FilterOperator>();
-        var TakeOperators = code.Syntax.GetDescendants<TakeOperator>();
 
         foreach (var FilterOperator in FilterOperators)
         {
@@ -112,88 +76,74 @@ public static class KustoToSqlConverter
                     filterMap.Add(s, new List<string>());
                 }
                 filterMap[s].Add(vals.ElementAt(i).ToString().Substring(1).Replace("\"", "").Replace(remove, "").Replace(")", ""));
-
                 i++;
             }
 
-            if (filterMap.ContainsKey("Service"))
-            {
-                service = filterMap["Service"][0];
-            }
-
-            if (filterMap.ContainsKey("Level"))
-            {
-                level = filterMap["Level"][0];
-            }
-
-            if (filterMap.ContainsKey("limit"))
-            {
-                limit = int.Parse(filterMap["limit"][0]);
-            }
-        }
-
-        foreach (var TakeOperator in TakeOperators)
-        {
-            var parsed = KustoCode.Parse(TakeOperator.ToString());
-            var vals = parsed.Syntax.GetDescendants<LiteralExpression>();
-
-            if (!filterMap.ContainsKey("limit"))
-            {
-                filterMap.Add("limit", new List<string>());
-            }
-            filterMap["limit"].Add(vals.First().ToString());
         }
 
         if (filterMap.ContainsKey("Timestamp"))
         {
             timestamp = DateTime.Parse(filterMap["Timestamp"][0]);
         }
-
-        if (filterMap.ContainsKey("Service"))
-        {
-            service = filterMap["Service"][0];
-        }
-
-        if (filterMap.ContainsKey("Level"))
-        {
-            level = filterMap["Level"][0];
-        }
-
-        if (filterMap.ContainsKey("limit"))
-        {
-            limit = int.Parse(filterMap["limit"][0]);
-        }
-
-        string sqlQuery = $"SELECT * FROM Logs WHERE ";
-        // Construct the SQL query using the extracted components
-        if (limit != null)
-        {
-            sqlQuery = $"SELECT TOP {limit} * FROM Logs WHERE ";
-        }
-
-
         if (timestamp != null)
         {
-            sqlQuery += $"Timestamp >= '{timestamp}' AND ";
+            sql += $" Timestamp >= '{timestamp.Value.ToString("yyyy-MM-dd HH:mm:ss")}' AND ";
+        }
+        ArrayList list = new ArrayList();
+
+
+        // print out the remaining key-value pairs
+        foreach (var entry in filterMap)
+        {
+            string key = entry.Key;
+            List<string> values = entry.Value;
+            if (key != "limit" && key != "Timestamp")
+            {
+                list.Add($"{key} = '{string.Join(", ", values)}'");
+            }
+
+
         }
 
-        if (service != null)
+
+
+        foreach (object element in list)
         {
-            sqlQuery += $"Service = '{service}' AND ";
+            sql += $" {element} AND ";
+
         }
 
-        if (level != null)
+
+
+        if (sql.EndsWith(" AND "))
         {
-            sqlQuery += $"Level = '{level}' AND ";
+            sql = sql.Substring(0, sql.Length - 5);
+        }
+        if (sql.EndsWith(" WHERE "))
+        {
+            sql = sql.Substring(0, sql.Length - 7);
         }
 
-        if (sqlQuery.EndsWith(" AND "))
+        if (limit != null)
         {
-            sqlQuery = sqlQuery.Substring(0, sqlQuery.Length - 5);
+            sql += $" LIMIT {limit} ";
         }
-        return sqlQuery;
+
+
+        return sql;
+    }
+
+
+
+    static String errToSql(String table)
+    {
+        String s = "Table: \"" + table + "\" not accessable or table doesn't exist.";
+        return s;
     }
 }
 
-
-
+public class Query
+{
+    //public string name { get; set; }
+    public string query { get; set; }
+}
