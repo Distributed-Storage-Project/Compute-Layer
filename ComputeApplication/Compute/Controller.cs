@@ -8,7 +8,7 @@ using System.Text;
 namespace ComputeLayer.Controllers
 {
     [ApiController]
-    [Route("api/home")]
+    [Route("query")]
     public class HomeController : ControllerBase
     {
         private readonly string _queryControllerUrl = "https://localhost:7076/api/query"; // Update with your QueryController endpoint URL
