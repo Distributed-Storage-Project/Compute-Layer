@@ -1,5 +1,0 @@
-/Users/jiayuechi/Projects/Compute/Compute/obj/Debug/net7.0/Compute.csproj.AssemblyReference.cache
-/Users/jiayuechi/Projects/Compute/Compute/obj/Debug/net7.0/Compute.GeneratedMSBuildEditorConfig.editorconfig
-/Users/jiayuechi/Projects/Compute/Compute/obj/Debug/net7.0/Compute.AssemblyInfoInputs.cache
-/Users/jiayuechi/Projects/Compute/Compute/obj/Debug/net7.0/Compute.AssemblyInfo.cs
-/Users/jiayuechi/Projects/Compute/Compute/obj/Debug/net7.0/Compute.csproj.CoreCompileInputs.cache
