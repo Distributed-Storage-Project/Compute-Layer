@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+XUgWosgoyTMeHEgVgdgigeGHAuWDp031jxhMDj5WTAXtAr5EIG02AsaPHjn7oNtfdWy5Jqnw6XjWe3ocv4+eg==",
+  "dgSpecHash": "ZCMGnQCjrKGGfy70Q6LD9ZC9s+JEXxXfLCubgdnW9eW5QQ82EkFuexBUTcOvyv4j50GL0CgOAj/RFr05xCHUEg==",
   "success": true,
-  "projectFilePath": "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj",
+  "projectFilePath": "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj",
   "expectedPackageFiles": [
     "/Users/jiayuechi/.nuget/packages/azure.core/1.20.0/azure.core.1.20.0.nupkg.sha512",
     "/Users/jiayuechi/.nuget/packages/azure.identity/1.3.0/azure.identity.1.3.0.nupkg.sha512",

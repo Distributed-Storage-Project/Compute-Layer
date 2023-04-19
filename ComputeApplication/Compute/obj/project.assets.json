@@ -4829,11 +4829,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj",
+      "projectUniqueName": "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj",
       "projectName": "Compute",
-      "projectPath": "/Users/jiayuechi/Projects/Compute/Compute/Compute.csproj",
+      "projectPath": "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj",
       "packagesPath": "/Users/jiayuechi/.nuget/packages/",
-      "outputPath": "/Users/jiayuechi/Projects/Compute/Compute/obj/",
+      "outputPath": "/Users/jiayuechi/Projects/ComputeApplication/Compute/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/jiayuechi/.nuget/NuGet/NuGet.Config"

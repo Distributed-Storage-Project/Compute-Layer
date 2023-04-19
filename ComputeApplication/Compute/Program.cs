@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,8 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("StorageAPI", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:7076/api/query"); //storage api address
+    client.BaseAddress = new Uri("http://65.52.71.65:7076/api/query"); //storage api address
+    string username = "StorageUser";
+    string password = "5t0r4g3U53r#2023";
+    var byteArray = Encoding.ASCII.GetBytes($"{username}:{password}");
+    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 });
+
 
 var app = builder.Build();
 
