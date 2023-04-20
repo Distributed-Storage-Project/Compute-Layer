@@ -11,12 +11,15 @@ namespace ComputeLayer.Controllers
     [Route("query")]
     public class HomeController : ControllerBase
     {
-        private readonly string _queryControllerUrl = "http://65.52.71.65:7076/api/query"; // Update with your QueryController endpoint URL
+        private readonly string _queryControllerUrl = "https://65.52.71.56:7076/api/query"; // Update with your QueryController endpoint URL
         private readonly HttpClient _httpClient;
 
         public HomeController()
         {
-            _httpClient = new HttpClient();
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            _httpClient = new HttpClient(clientHandler);
         }
 
         [HttpPost]
