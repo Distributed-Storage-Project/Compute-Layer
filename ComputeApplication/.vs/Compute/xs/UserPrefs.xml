@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{B0DB906F-2B23-450F-8473-8003C4E2B1E6}|Default">
+  <MonoDevelop.Ide.ItemProperties.Compute PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Compute/Converter_Delete.cs">
+    <Files>
+      <File FileName="Compute/Controller.cs" Line="220" Column="1" IsPinned="True" />
+      <File FileName="Compute/Startup.cs" />
+      <File FileName="Compute/Login.cs" />
+      <File FileName="Compute/Converter_Delete.cs" Line="26" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Compute" expanded="True">
+            <Node name="Compute" expanded="True">
+              <Node name="Converter_Delete.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

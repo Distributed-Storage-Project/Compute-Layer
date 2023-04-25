@@ -4,6 +4,12 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace ComputeLayer.Controllers
 {
@@ -11,11 +17,16 @@ namespace ComputeLayer.Controllers
     [Route("query")]
     public class HomeController : ControllerBase
     {
-        private readonly string _queryControllerUrl = "https://65.52.71.56:7076/api/query"; // Update with your QueryController endpoint URL
+        private readonly string _queryControllerUrl = "https://localhost:7076/api/query"; // Update with your QueryController endpoint URL
         private readonly HttpClient _httpClient;
+        private readonly IOptions<JwtSettings> _jwtSettings;
 
-        public HomeController()
+        
+
+        public HomeController(IOptions<JwtSettings> jwtSettings)
         {
+            _jwtSettings = jwtSettings;
+
             HttpClientHandler clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
@@ -48,6 +59,7 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost("delete")]
+        [Authorize(Roles = "SystemAdmin")]
         public async Task<IActionResult> Delete([FromBody] Query query)
         {
             try
@@ -73,6 +85,7 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost("insert")]
+        [Authorize(Roles = "SystemAdmin")]
         public async Task<IActionResult> Insert([FromBody] Query query)
         {
             try
@@ -98,6 +111,7 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost("create")]
+        [Authorize(Roles = "SystemAdmin")]
         public async Task<IActionResult> Create([FromBody] Query query)
         {
             try
@@ -123,6 +137,7 @@ namespace ComputeLayer.Controllers
         }
 
         [HttpPost("drop")]
+        [Authorize(Roles = "SystemAdmin")]
         public async Task<IActionResult> Drop([FromBody] Query query)
         {
             try
@@ -145,6 +160,60 @@ namespace ComputeLayer.Controllers
             {
                 return StatusCode(500, e.Message);
             }
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        {
+            var users = new List<User>
+            {
+                new User { Username = "admin", Password = "myPassword123", Role = "SystemAdmin" },
+                new User { Username = "user", Password = "myPassword123", Role = "User" }
+            };
+
+            var user = users.FirstOrDefault(u => u.Username == loginRequest.Username && u.Password == loginRequest.Password);
+
+            if (user == null)
+            {
+                return Unauthorized("Invalid credentials");
+            }
+            // Validate the user's credentials.
+            // This example assumes the user is valid and has the "SystemAdmin" role.
+            // Replace this with your own logic for user validation and role assignment.
+            if (loginRequest.Username != "admin" || loginRequest.Password != "myPassword123")
+            {
+                return Unauthorized("Invalid credentials");
+            }
+
+
+            var jwtSettings = _jwtSettings.Value;
+
+            // Create a list of claims for the JWT token
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Name, loginRequest.Username),
+        new Claim(ClaimTypes.Role, "SystemAdmin") // Assign the "SystemAdmin" role to the user
+    };
+
+            // Create the security key and signing credentials
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey));
+            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Create the JWT token
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings.Issuer,
+                audience: jwtSettings.Audience,
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(jwtSettings.TokenExpirationInMinutes),
+                signingCredentials: signingCredentials
+                    );
+
+            // Serialize the JWT token into a string
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var serializedToken = tokenHandler.WriteToken(token);
+
+            // Return the serialized JWT token
+            return Ok(new { token = serializedToken });
         }
     }
 }
