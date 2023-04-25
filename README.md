@@ -1,6 +1,6 @@
 # Compute-Layer
 
-For testing: <br>
+For local testing: <br>
 Post, url e.g. Postman: http://localhost:5000/query<br>
 Input format Json, e.g. :
 {
