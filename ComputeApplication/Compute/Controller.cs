@@ -10,6 +10,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Linq;
+using BCrypt.Net;
 
 namespace ComputeLayer.Controllers
 {
@@ -17,7 +19,7 @@ namespace ComputeLayer.Controllers
     [Route("query")]
     public class HomeController : ControllerBase
     {
-        private readonly string _queryControllerUrl = "https://65.52.71.56:7076/api/query"; // Update with your QueryController endpoint URL
+        private readonly string _queryControllerUrl = "https://localhost:7076/api/query"; // Update with your QueryController endpoint URL
         private readonly HttpClient _httpClient;
         private readonly IOptions<JwtSettings> _jwtSettings;
 
@@ -165,35 +167,29 @@ namespace ComputeLayer.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest loginRequest)
         {
-            var users = new List<User>
-            {
-                new User { Username = "admin", Password = "myPassword123", Role = "SystemAdmin" },
-                new User { Username = "user", Password = "myPassword123", Role = "User" }
-            };
 
-            var user = users.FirstOrDefault(u => u.Username == loginRequest.Username && u.Password == loginRequest.Password);
+            var user = UserData.Users.FirstOrDefault(u => u.Username == loginRequest.Username);
 
-            if (user == null)
-            {
-                return Unauthorized("Invalid credentials");
-            }
-            // Validate the user's credentials.
-            // This example assumes the user is valid and has the "SystemAdmin" role.
-            // Replace this with your own logic for user validation and role assignment.
-            if (loginRequest.Username != "admin" || loginRequest.Password != "myPassword123")
+            if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password))
             {
                 return Unauthorized("Invalid credentials");
             }
 
+            // Check if the user's role is "SystemAdmin"
+            if (user.Role != "SystemAdmin")
+            {
+                return Unauthorized("User does not have SystemAdmin role");
+            }
 
             var jwtSettings = _jwtSettings.Value;
 
             // Create a list of claims for the JWT token
             var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, loginRequest.Username),
-        new Claim(ClaimTypes.Role, "SystemAdmin") // Assign the "SystemAdmin" role to the user
-    };
+        {
+            new Claim(ClaimTypes.Name, loginRequest.Username),
+            new Claim(ClaimTypes.Role, user.Role) // Assign the role from the user object
+        };
+
 
             // Create the security key and signing credentials
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey));

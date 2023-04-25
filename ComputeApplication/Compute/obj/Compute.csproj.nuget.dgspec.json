@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj": {}
+    "/Users/jiayuechi/Downloads/Compute-Layer-main/ComputeApplication/Compute/Compute.csproj": {}
   },
   "projects": {
-    "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj": {
+    "/Users/jiayuechi/Downloads/Compute-Layer-main/ComputeApplication/Compute/Compute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj",
+        "projectUniqueName": "/Users/jiayuechi/Downloads/Compute-Layer-main/ComputeApplication/Compute/Compute.csproj",
         "projectName": "Compute",
-        "projectPath": "/Users/jiayuechi/Projects/ComputeApplication/Compute/Compute.csproj",
+        "projectPath": "/Users/jiayuechi/Downloads/Compute-Layer-main/ComputeApplication/Compute/Compute.csproj",
         "packagesPath": "/Users/jiayuechi/.nuget/packages/",
-        "outputPath": "/Users/jiayuechi/Projects/ComputeApplication/Compute/obj/",
+        "outputPath": "/Users/jiayuechi/Downloads/Compute-Layer-main/ComputeApplication/Compute/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jiayuechi/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
               "version": "[5.2.9, )"
