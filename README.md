@@ -1,7 +1,7 @@
 # Compute-Layer
 
 For local testing (e.g. using Postman): <br>
-Make sure storage layer is running, modify storage layer to request on storage layer ("https://localhost:7076/api/query", default) <br>
+Make sure storage layer is running, modify home controller to request on storage layer ("https://localhost:7076/api/query", default) <br>
 <br><br><br>
 For reading data:<br>
 =>Post to api: http://localhost:5000/query<br>
