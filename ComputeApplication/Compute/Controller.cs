@@ -17,7 +17,7 @@ namespace ComputeLayer.Controllers
     [Route("query")]
     public class HomeController : ControllerBase
     {
-        private readonly string _queryControllerUrl = "https://localhost:7076/api/query"; // Update with your QueryController endpoint URL
+        private readonly string _queryControllerUrl = "https://65.52.71.56:7076/api/query"; // Update with your QueryController endpoint URL
         private readonly HttpClient _httpClient;
         private readonly IOptions<JwtSettings> _jwtSettings;
 
