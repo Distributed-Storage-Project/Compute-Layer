@@ -19,7 +19,7 @@ For inserting data/deleting data/creating table/dropping table: <br>
                }
       <br>
 If user has access to write flow (e.g. system admin), token will be returned. <br>
-=>(e.g. in Postman): Headers ->    set Key as "Authorization", and Value as "Bearer \<token\>" //replace token with token returned, valid for 60 min.<br>
+=>(e.g. in Postman): Authorization -> Bearer Token -> Token returned, valid for 60 min. <br>
 =>Post to api respectively, with autorization token => <br>
 http://localhost:5000/query/insert<br>
 http://localhost:5000/query/delete<br>
