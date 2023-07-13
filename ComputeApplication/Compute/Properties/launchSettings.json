@@ -7,7 +7,7 @@
     "Compute": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://0.0.0.0:5000",
+      "applicationUrl": ".",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
